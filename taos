@@ -11,12 +11,16 @@ if [[ $1 == "start" ]]; then
 elif [[ $1 == "stop" ]]; then
     systemctl stop taos
     exit
+elif [[ $1 == "restart" ]]; then
+    systemctl restart taos
+    exit
 else
     echo "taos <command>"
     echo ""
     echo "Usage:"
     echo ""
-    echo "taos start  start taos daemon"
-    echo "taos stop   stop taos daemon"
+    echo "taos start    start taos daemon"
+    echo "taos stop     stop taos daemon"
+    echo "taos restart  start taos daemon"
     exit 1
 fi
