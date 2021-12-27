@@ -1,0 +1,10 @@
+[Unit]
+Description=Taos Web Host Daemon
+
+[Service]
+Type=simple
+ExecStart=/etc/taos/start
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

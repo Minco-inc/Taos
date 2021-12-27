@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ "$EUID" -ne 0 ]
+    then echo "[Taos] Please run as root."
+    exit
+fi
+
+echo "[Taos] Installing..."
+echo "[Taos] Copying Taos files..."
+mkdir /etc/taos || true
+cp * /etc/taos || true
+echo "[Taos] Copied Tais files."
+echo "[Taos] Copying systemd file..."
+cp ./taos.service /etc/systemd/system/
+echo "[Taos] Colied systemd file."
+echo "[Taos] Installation complete."
+echo "[Taos] Starting..."
+systemctl start taos
+echo "[Taos] Taos daemon started."
