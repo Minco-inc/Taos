@@ -12,7 +12,7 @@ if ! [[ $(systemctl list-units --all -t service --full --no-legend "taos.service
 fi
 
 if [[ $1 == "start" ]]; then
-    systemctl start tais
+    systemctl start taos
     exit
 elif [[ $1 == "stop" ]]; then
     systemctl stop taos

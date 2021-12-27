@@ -20,7 +20,6 @@ class PathManager {
         for (let name in unusuals) {
             let isMatch = wcmatch(name);
             let escapedPath = path.substring(1);
-            console.log("PM", name, escapedPath, isMatch(escapedPath));
             if (isMatch(escapedPath)) {
                 unusual = unusuals[name];
                 break;
@@ -29,7 +28,6 @@ class PathManager {
 
         let returnVal;
         if (unusual) {
-            console.log("PM", unusual);
             unusual.handle(req, res);
             returnVal = false;
         } else {
