@@ -1,5 +1,5 @@
-<h1><img src="icons/initial.jpg" alt="initialIcon"> Taos Web Server</h1>
-![fullIcon](icons/full.jpg)
+<h1><img src="icons/initial.jpg" alt="initialIcon" width="24px"> Taos Web Server</h1>
+<img src="icons/full.jpg" alt="fullIcon">
 
 ## Installation
 To install the Taos Web Server, execute these commands in order.
