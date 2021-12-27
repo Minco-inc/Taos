@@ -5,6 +5,9 @@ const Config = require("../util/Config");
 class PathManager {
     static get(path, req, res) {
         let { unusualPathDir } = new Config();
+        if (!fs.existsSync(unusualPathDir)) {
+            fs.mkdirSync(unusualPathDir);
+        }
         let unusualPaths = fs.readdirSync(unusualPathDir).filter(f => f.endsWith(".js"));
 
         let unusuals = {};
