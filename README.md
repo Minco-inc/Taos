@@ -2,13 +2,14 @@
 <img src="icons/full.jpg" alt="fullIcon">
 
 ## Installation
-To install the Taos Web Server, execute these commands in order.
-1. Installing Taos-Setup
+To install the Taos Web Server, execute one of these commands.
+1. Automatic Install
+```bash
+wget -q -O - https://raw.githubusercontent.com/Minco-inc/Taos/master/install.sh | sudo bash
+```
+2. Manual Install
 ```bash
 sudo npm i taos-setup -g
-```
-2. Installing Taos Web Server
-```bash
 sudo taos-setup install
 ```
 
