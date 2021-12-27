@@ -1,0 +1,28 @@
+#!/bin/bash
+
+if [[ "$EUID" -ne 0 ]]
+    then echo "[Taos] Please run as root."
+    exit 1
+fi
+
+if ! [[ $(systemctl list-units --all -t service --full --no-legend "taos.service" | sed 's/^\s*//g' | cut -f1 -d' ') == taos.service ]]; then
+    echo "[Taos] Taos daemon isn't correctely installed."
+    echo "[Taos] Try executing taos-setup install"
+    exit 1
+fi
+
+if [[ $1 == "start" ]]; then
+    systemctl start tais
+    exit
+elif [[ $1 == "stop" ]]; then
+    systemctl stop taos
+    exit
+else
+    echo "taos <command>"
+    echo ""
+    echo "Usage:"
+    echo ""
+    echo "taos start  start taos daemon"
+    echo "taos stop   stop taos daemon"
+    exit 1
+fi
