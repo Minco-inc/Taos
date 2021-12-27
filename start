@@ -1,2 +1,2 @@
 #!/bin/bash
-node app
+node /etc/taos/app

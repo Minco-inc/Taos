@@ -5,12 +5,6 @@ if [[ "$EUID" -ne 0 ]]
     exit 1
 fi
 
-if ! [[ $(systemctl list-units --all -t service --full --no-legend "taos.service" | sed 's/^\s*//g' | cut -f1 -d' ') == taos.service ]]; then
-    echo "[Taos] Taos daemon isn't correctely installed."
-    echo "[Taos] Try executing taos-setup install"
-    exit 1
-fi
-
 if [[ $1 == "start" ]]; then
     systemctl start taos
     exit
