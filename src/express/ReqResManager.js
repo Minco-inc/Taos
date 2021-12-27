@@ -77,7 +77,7 @@ class ReqResManager {
     render(urlPath) {
         let { req, res } = this;
         urlPath = urlPath.startsWith("/") ? urlPath.substring(1) : urlPath;
-        res.render(urlPath);
+        res.render(urlPath, { req: req, res: res });
     }
 }
 
