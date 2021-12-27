@@ -1,4 +1,4 @@
-<h1><img src="icons/initial.png" alt="initialIcon" width="24px"> Taos Web Server</h1>
+<h1><img src="icons/initial.png" alt="initialIcon" width="32px"> Taos Web Server</h1>
 <img src="icons/full.jpg" alt="fullIcon">
 
 ## Installation
