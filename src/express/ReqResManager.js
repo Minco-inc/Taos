@@ -42,7 +42,7 @@ class ReqResManager {
                     let indexEjs = "index.ejs"; // TODO: index.ejs to config
                     let indexPath = path.normalize(`${viewsDir}${urlPath}${indexEjs}`);
                     if (fs.existsSync(indexPath)) {
-                        this.render(urlPath + indexEjs);
+                        this.render(urlPath + indexEjs, path.dirname(indexPath));
                         break;
                     } else {
                         res.writeHead(403, "Forbidden");
@@ -52,7 +52,7 @@ class ReqResManager {
                 } else {
                     let filePath = path.normalize(`${viewsDir}${urlPath}.ejs`);
                     if (fs.existsSync(filePath)) {
-                        this.render(urlPath);
+                        this.render(urlPath, path.dirname(filePath));
                         break;
                     } else {
                         // no break
@@ -74,10 +74,10 @@ class ReqResManager {
         }
     }
 
-    render(urlPath) {
+    render(urlPath, absoluteDir) {
         let { req, res } = this;
         urlPath = urlPath.startsWith("/") ? urlPath.substring(1) : urlPath;
-        res.render(urlPath, { req: req, res: res });
+        res.render(urlPath, { req: req, res: res, require: require, _dir: absoluteDir });
     }
 }
 
