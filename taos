@@ -21,6 +21,6 @@ else
     echo ""
     echo "taos start    start taos daemon"
     echo "taos stop     stop taos daemon"
-    echo "taos restart  start taos daemon"
+    echo "taos restart  restart taos daemon"
     exit 1
 fi
