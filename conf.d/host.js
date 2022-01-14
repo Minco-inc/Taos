@@ -1,4 +1,8 @@
 module.exports = {
+    hosts: [
+        'minco.kro.kr',
+        'www.minco.kro.kr'
+    ],
     http: {
         port: 82
     },

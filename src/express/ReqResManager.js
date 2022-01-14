@@ -16,6 +16,15 @@ class ReqResManager {
         let urlPath = parsedUrl.pathname;
         let parsedPath = path.parse(urlPath);
         let viewsDir = res.app.settings.views;
+        let { document, host } = new Config();
+
+        let match = false;
+        for (var h of host.hosts) {
+            if (this.wildTest(h, req.host)) {
+                match = true;
+            }
+        }
+        if (!match) return;
 
         let file = PathManager.get(urlPath, req, res);
         if (!file) return;
@@ -34,7 +43,6 @@ class ReqResManager {
         }
 
         res.setHeader("Content-Type", "text/html");
-        let { document } = new Config();
 
         switch (true) {
             case (parsedPath.ext == ""):
@@ -78,6 +86,12 @@ class ReqResManager {
         let { req, res } = this;
         urlPath = urlPath.startsWith("/") ? urlPath.substring(1) : urlPath;
         res.render(urlPath, { req: req, res: res, require: require, _dir: absoluteDir });
+    }
+
+    wildTest(wildcard, str) {
+        let w = wildcard.replace(/[.+^${}()|[\]\\]/g, '\\$&'); // regexp escape 
+        const re = new RegExp(`^${w.replace(/\*/g,'.*').replace(/\?/g,'.')}$`,'i');
+        return re.test(str); // remove last 'i' above to have case sensitive
     }
 }
 
