@@ -85,7 +85,7 @@ class ReqResManager {
     render(urlPath, absoluteDir) {
         let { req, res } = this;
         urlPath = urlPath.startsWith("/") ? urlPath.substring(1) : urlPath;
-        res.render(urlPath, { req: req, res: res, require: require, _dir: absoluteDir });
+        res.render(urlPath, { req: req, res: res, require: require, __dirname: absoluteDir });
     }
 
     wildTest(wildcard, str) {
