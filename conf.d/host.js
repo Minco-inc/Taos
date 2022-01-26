@@ -1,13 +1,13 @@
 module.exports = {
     hosts: [
-        '*.myDomain.com',
-        'mySecondDomain.com'
+        '*.minco.kro.kr',
+        'minco.kro.kr'
     ],
     http: {
-        port: 82
+        port: 80
     },
     https: {
-        port: 445,
+        port: 443,
         cert: "/etc/letsencrypt/live/minco.kro.kr/fullchain.pem",
         key: "/etc/letsencrypt/live/minco.kro.kr/privkey.pem"
     }
