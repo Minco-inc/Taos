@@ -6,6 +6,13 @@ const Logger = require("./util/Logger");
 
 class Main {
     constructor() {
+        process.on("uncaughtException", (err) => {
+            console.error(err);
+        });
+        process.on("unhandledRejection", (err) => {
+            console.error(err);
+        });
+
         let host = this.host = new Config().host;
         let server = this.server = new ExpressServer(host);
         let logger = this.logger = new Logger();

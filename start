@@ -1,2 +1,2 @@
 #!/bin/bash
-node /etc/taos/app
+sudo node /etc/taos/app
