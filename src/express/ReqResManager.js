@@ -3,6 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const mime = require("mime-types");
 const PathManager = require("./PathManager");
+const Error = require("./Error");
 const Config = require("../util/Config");
 
 class ReqResManager {
@@ -17,6 +18,7 @@ class ReqResManager {
         let parsedPath = path.parse(urlPath);
         let viewsDir = res.app.settings.views;
         let { document, host } = new Config();
+        let error = new Error(document.errorDocument);
 
         let match = false;
         for (var h of host.hosts) {
@@ -53,8 +55,7 @@ class ReqResManager {
                         this.render(urlPath + indexEjs, path.dirname(indexPath));
                         break;
                     } else {
-                        res.writeHead(403, "Forbidden");
-                        res.end("403"); // TODO: Customize
+                        error.error(403, this);
                         break;
                     }
                 } else {
@@ -77,8 +78,7 @@ class ReqResManager {
                     // no break
                 }
             default:
-                res.writeHead(404, "Not Found");
-                res.end("404"); // TODO: Customize
+                error.error(404, this);
         }
     }
 

@@ -4,6 +4,7 @@
     "express": "^4.17.2",
     "mime-types": "^2.1.34",
     "react-scripts": "^5.0.0",
+    "request": "^2.88.2",
     "wildcard-match": "^5.1.2"
   },
   "name": "website",
